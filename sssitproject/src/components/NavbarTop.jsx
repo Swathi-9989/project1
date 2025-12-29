@@ -28,12 +28,10 @@ const NavbarTop = () => {
   };
 
   const handleConfirmLogout = () => {
-    sessionStorage.removeItem("admin");
-    window.dispatchEvent(new Event("storage"));
+  localStorage.removeItem("admin");
+  navigate("/login", { replace: true });
+};
 
-    setShowLogoutConfirm(false);
-    navigate("/login", { replace: true });
-  };
 
   return (
     <>

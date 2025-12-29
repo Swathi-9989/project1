@@ -51,9 +51,9 @@ const AdminLogin = () => {
     setTimeout(() => {
       if (username === savedUsername && password === savedPassword) {
         // ✅ STORE BOOLEAN STRING (IMPORTANT)
-        sessionStorage.setItem("admin", "true");
-
+        localStorage.setItem("admin", "true");
         navigate("/", { replace: true });
+
       } else {
         setError("❌ Invalid username or password");
       }

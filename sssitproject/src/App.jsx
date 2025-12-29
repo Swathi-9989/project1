@@ -5,7 +5,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
@@ -29,24 +28,24 @@ import AddExamStudent from "./components/AddExamStudent";
 import Home from "./components/Home";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => {
-    const admin = sessionStorage.getItem("admin");
-    setIsLoggedIn(!!admin);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("admin") === "true"
+  );
 
-    const handleStorage = () => {
-      const updatedAdmin = sessionStorage.getItem("admin");
-      setIsLoggedIn(!!updatedAdmin);
+  useEffect(() => {
+    const syncAuth = () => {
+      setIsLoggedIn(localStorage.getItem("admin") === "true");
     };
 
-    window.addEventListener("storage", handleStorage);
+    // sync on focus (important for SPA)
+    window.addEventListener("focus", syncAuth);
 
-    return () => window.removeEventListener("storage", handleStorage);
+    return () => window.removeEventListener("focus", syncAuth);
   }, []);
 
   return (
     <Router>
-      {isLoggedIn && <NavbarTop />}
+      {isLoggedIn && <NavbarTop setIsLoggedIn={setIsLoggedIn} />}
 
       <main className="main-content">
         <Routes>
@@ -57,10 +56,6 @@ const App = () => {
             </>
           ) : (
             <>
-             
-
-
-
               <Route path="/" element={<Home />} />
               <Route path="/enroll/new" element={<NewStudentEnroll />} />
               <Route path="/enroll/old" element={<OldStudentEnroll />} />
@@ -73,17 +68,9 @@ const App = () => {
               <Route path="/add-course" element={<AddNewCourse />} />
               <Route path="/faculty" element={<FacultyDetails />} />
               <Route path="/student-details" element={<StudentDetails />} />
-              <Route
-                path="/exam_written_students"
-                element={<ExamWrittenStudents />}
-              />
-              <Route
-                path="/certificate_details"
-                element={<CertificateDetails />}
-              />
+              <Route path="/exam_written_students" element={<ExamWrittenStudents />} />
+              <Route path="/certificate_details" element={<CertificateDetails />} />
               <Route path="/add_exam_student" element={<AddExamStudent />} />
-
-              <Route path="/logout" element={<Navigate to="/login" replace />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </>
           )}
@@ -92,5 +79,6 @@ const App = () => {
     </Router>
   );
 };
+
 
 export default App;
