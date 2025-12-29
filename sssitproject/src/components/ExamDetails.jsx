@@ -163,7 +163,7 @@ export default function AddExamStudent() {
         <div className="card-body row g-3">
           <div className="col-md-6">
 
-            <label>Reg No:</label>
+            <label className="mt-5">Reg No:</label>
             <div style={{ position: "relative" }}>
               <input
                 type="text"
