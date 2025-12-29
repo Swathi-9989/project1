@@ -27,10 +27,13 @@ const NavbarTop = () => {
     padding:"4px 12px"
   };
 
-  const handleConfirmLogout = () => {
-  localStorage.removeItem("admin");
-  navigate("/login", { replace: true });
-};
+    const handleConfirmLogout = () => {
+    localStorage.removeItem("admin");   // remove persistence
+    setIsLoggedIn(false);               // 🔥 update React state
+    navigate("/login", { replace: true });
+  };
+
+
 
 
   return (

@@ -32,17 +32,6 @@ const App = () => {
     localStorage.getItem("admin") === "true"
   );
 
-  useEffect(() => {
-    const syncAuth = () => {
-      setIsLoggedIn(localStorage.getItem("admin") === "true");
-    };
-
-    // sync on focus (important for SPA)
-    window.addEventListener("focus", syncAuth);
-
-    return () => window.removeEventListener("focus", syncAuth);
-  }, []);
-
   return (
     <Router>
       {isLoggedIn && <NavbarTop setIsLoggedIn={setIsLoggedIn} />}
@@ -79,6 +68,7 @@ const App = () => {
     </Router>
   );
 };
+
 
 
 export default App;
