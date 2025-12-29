@@ -1,0 +1,362 @@
+/* ===========================================================
+   🌟 Floating Input Styles
+   =========================================================== */
+.floating-input-container {
+    position: relative;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+    /* Space below each input */
+}
+
+/* Input box styling */
+.floating-input-container input {
+    width: 100%;
+    padding: 10px 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus effect */
+.floating-input-container input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+}
+
+/* Label styling */
+.floating-input-container label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    color: #6c757d;
+    background: white;
+    padding: 0 5px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+/* Label moves up when focused or filled */
+.floating-input-container input:focus~label,
+.floating-input-container input:not(:placeholder-shown)~label {
+    top: -10px;
+    left: 10px;
+    font-size: 13px;
+    color: #0d6efd;
+}
+
+/* Error styling */
+.has-error input {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 4px rgba(220, 53, 69, 0.3);
+}
+
+/* Error message spacing */
+.error-message {
+    min-height: 18px;
+    margin-top: 4px;
+}
+
+/* ===========================================================
+   👨‍🏫 Faculty Layout Helpers
+   =========================================================== */
+.faculty-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* Button group */
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+/* ===========================================================
+   🔽 Autocomplete Dropdown
+   =========================================================== */
+.floating-input-wrapper {
+    position: relative;
+    padding-bottom: 60px;
+    /* space for dropdown */
+}
+
+.autocomplete-dropdown {
+    position: absolute;
+    top: 52px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 6px 0;
+    z-index: 1000;
+}
+
+.dropdown-option {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 6px;
+    margin: 3px 8px;
+    transition: 0.2s ease;
+}
+
+.dropdown-option:hover {
+    background: #eef4ff;
+    color: #0d6efd;
+}
+
+/* ===========================================================
+   📅 Batch Calendar Styles
+   =========================================================== */
+.calendar {
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+    padding: 16px;
+    background: #fff;
+}
+
+.calendar-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 6px;
+}
+
+.weekday {
+    padding: 6px 0;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.day {
+    border: 1px solid #e9ecef;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px 0;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.05s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.day:hover {
+    background: #f5f9ff;
+    border-color: #cfe2ff;
+}
+
+.day.selected {
+    background: #0d6efd;
+    color: #ffffff;
+    border-color: #0d6efd;
+}
+
+.day.blank {
+    border: none;
+    background: transparent;
+    cursor: default;
+}
+
+.calendar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+.selected-date {
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+/* ===========================================================
+   🗓 Mini Calendar
+   =========================================================== */
+.mini-calendar {
+    width: 260px;
+    margin: 0 auto;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+}
+
+.mini-cal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.mini-cal-header select {
+    width: 48%;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.mini-cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-size: 13px;
+    color: #6c757d;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.mini-cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.mini-cal-day {
+    width: 100%;
+    padding: 6px 0;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    background: #fafafa;
+    transition: 0.15s;
+}
+
+.mini-cal-day:hover {
+    background: #eaf2ff;
+    border-color: #bcd4ff;
+}
+
+.mini-cal-day.selected {
+    background: #0d6efd !important;
+    color: white;
+    font-weight: bold;
+    border-color: #0a58ca;
+}
+
+.mini-cal-day.blank {
+    border: none;
+    background: transparent;
+    cursor: default;
+}
+
+.mini-cal-footer {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding: 6px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+/* ===========================================================
+   🎨 Table Row Hover (Lavender)
+   =========================================================== */
+.batch-hover {
+    transition: background-color 0.25s ease;
+}
+
+.batch-hover:hover {
+    background-color: #e8e6ff !important;
+    /* soft lavender */
+    cursor: pointer;
+}
+
+/* ===========================================================
+   📦 Card Container Styling
+   =========================================================== */
+.container-mt-5 {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* ===========================================================
+   💧 Button Hover Fill Animation
+   =========================================================== */
+/* Strong lavender hover that overrides Bootstrap */
+.table.table-hover tbody tr.batch-hover:hover,
+.table.table-hover tbody tr.batch-row.batch-hover:hover {
+    background-color: #e6e6fa !important;
+    /* lavender */
+}
+
+.table.table-hover tbody tr.batch-hover:hover td,
+.table.table-hover tbody tr.batch-row.batch-hover:hover td {
+    background-color: transparent;
+    /* keep td transparent so row bg shows */
+}
+
+/* Slight scale + smooth transition */
+.table.table-hover tbody tr.batch-hover {
+    transition: background-color 0.25s ease, transform 0.12s ease;
+}
+
+.table.table-hover tbody tr.batch-hover:hover {
+    transform: scale(1.005);
+}
+
+/* Optional: alternate subtle row colors that match the lavender theme */
+.table.table-hover tbody tr:nth-child(even):not(.batch-hover) {
+    background-color: #faf9ff;
+}
+
+/* ===========================================================
+   🍊 Force Orange Table Header Override (Bootstrap $orange-200)
+   =========================================================== */
+
+/* Apply background directly to the <th> cells (highest specificity) */
+.table.custom-table>thead.table-header>tr>th {
+    background-color: #3730a3 !important;
+    /* Bootstrap $orange-200 */
+    background-image: none !important;
+    font-weight: 700 !important;
+    /* Bolder for emphasis */
+    font-size: 1.1rem !important;
+    /* Increased font size (17.6px) */
+    letter-spacing: 0.3px;
+    /* Slightly spaced for readability */
+    color: white !important;
+    /* readable dark brown text */
+    font-weight: 600 !important;
+    border-bottom: 2px solid #312e81 !important;
+}
+
+/* Optional gradient look */
+.table.custom-table>thead.table-header>tr>th {
+    background: linear-gradient(90deg, #3730a3, #3730a3) !important;
+}
+
+/* Optional header shadow */
+.table.custom-table>thead.table-header>tr>th {
+    box-shadow: inset 0 -1px 0 #3730a3;
+}

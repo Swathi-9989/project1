@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: sssit
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn SSSIT.wsgi:application
